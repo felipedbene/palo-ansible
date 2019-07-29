@@ -8,7 +8,7 @@
     - role: PaloAltoNetworks.paloaltonetworks
 
   tasks:
-    - name : Check if PAN is Ready for us (10 min max)
+    - name : Check if PAN is Ready for us (10 min timeout)
       panos_check :
         ip_address : '{{ ip_address }}'
         api_key : '{{ api_key }}'      
