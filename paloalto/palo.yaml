@@ -1,0 +1,18 @@
+---
+- name: Set admin password
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  roles :
+    - role: PaloAltoNetworks.paloaltonetworks
+
+  tasks:
+    - name : configura fefo
+      panos_administrator :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'
+        admin_username : 'fefo'
+        admin_password : 'c4r4lh086'
+        superuser: True
+        commit : True

@@ -1,0 +1,59 @@
+---
+- name: Upgrade system software from 8.0 to 8.1
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  roles :
+    - role: PaloAltoNetworks.paloaltonetworks
+
+  tasks:
+    - name : Check if PAN is Ready for us (10 min max)
+      panos_check :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'      
+        initial_delay: 10
+        interval: 5
+        timeout : 600      
+
+    - name : Request download to the latest CONTENT
+      panos_op :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'
+        cmd : 'request content upgrade download latest'
+
+    - name : Wait for the CONTENT download to finish
+      panos_check :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'      
+        initial_delay: 60
+        interval: 5
+        timeout : 600       
+
+    - name : Request install to the latest CONTENT
+      panos_op :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'
+        cmd : 'request content upgrade install version latest'
+    
+    - name : Wait for the CONTENT to finish installing
+      panos_check :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'      
+        initial_delay: 60
+        interval: 5
+        timeout : 600    
+
+    - name : Download and install 8.1.0 base image
+      panos_software :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'
+        version : '8.1.0'
+        restart: false
+    
+    - name : Update to 8.1.6 and reboot
+      panos_software :
+        ip_address : '{{ ip_address }}'
+        api_key : '{{ api_key }}'
+        version : '8.1.6'
+        restart: true

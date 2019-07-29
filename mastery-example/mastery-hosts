@@ -1,0 +1,6 @@
+[dev]
+palodev.microplus.lab ansible_ssh_host=192.168.238.129
+
+[all:vars]
+ansible_ssh_user=admin
+ansible_ssh_pass=admin

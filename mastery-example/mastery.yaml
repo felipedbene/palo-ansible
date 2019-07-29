@@ -1,0 +1,12 @@
+---
+- name: limit example play
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: tell us which host we are on
+      debug:
+        var: inventory_hostname
+    - name: grab var data from backend
+      debug:
+        var: hostvars['palodev.microplus.lab']
