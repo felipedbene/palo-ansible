@@ -8,13 +8,14 @@
     - role: PaloAltoNetworks.paloaltonetworks
 
   tasks:
+
     - name : Check if PAN is Ready for us (10 min timeout)
       panos_check :
         ip_address : '{{ ip_address }}'
         api_key : '{{ api_key }}'      
         initial_delay: 10
         interval: 5
-        timeout : 600      
+        timeout :       
 
     - name : Request download to the latest CONTENT
       panos_op :
@@ -44,16 +45,16 @@
         interval: 5
         timeout : 600    
 
-    - name : Download and install 8.1.0 base image
-      panos_software :
-        ip_address : '{{ ip_address }}'
-        api_key : '{{ api_key }}'
-        version : '8.1.0'
-        restart: false
+  #  - name : Download and install 8.1.0 base image
+  #    panos_software :
+  #      ip_address : '{{ ip_address }}'
+  #      api_key : '{{ api_key }}'
+  #      version : '8.1.0'
+  #      restart: false
     
-    - name : Update to 8.1.6 and reboot
-      panos_software :
-        ip_address : '{{ ip_address }}'
-        api_key : '{{ api_key }}'
-        version : '8.1.6'
-        restart: true
+  #  - name : Update to 8.1.6 and reboot
+  #    panos_software :
+  #      ip_address : '{{ ip_address }}'
+  #      api_key : '{{ api_key }}'
+  #      version : '8.1.6'
+  #      restart: true
