@@ -5,4 +5,3 @@ Scripts have written and tested on PA-VM (VM-100) to upgrade a single node.
 mastery-example/ -> example used to inspire these scripts
 paloalto/ -> real scripts
 
-issues -> felipe.debene@gmail.com
