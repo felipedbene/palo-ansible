@@ -12,7 +12,7 @@
     - name : Check if PAN is Ready for us (10 min timeout)
       panos_check :
         ip_address : '{{ ip_address }}'
-        api_key : '{{ api_key }}'      
+        api_key : '{{ api_key }}'
         initial_delay: 10
         interval: 5
         timeout : 600
@@ -27,13 +27,13 @@
       panos_check :
         ip_address : '{{ ip_address }}'
         api_key : '{{ api_key }}'      
-        initial_delay: 60
+       initial_delay: 60
         interval: 5
         timeout : 600       
 
     - name : Request install to the latest CONTENT
       panos_op :
-        ip_address : '{{ ip_address }}'
+       ip_address : '{{ ip_address }}'
         api_key : '{{ api_key }}'
         cmd : 'request content upgrade install version latest'
     
