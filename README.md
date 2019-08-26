@@ -8,7 +8,7 @@ paloalto/ -> real scripts
 Module repository: https://github.com/PaloAltoNetworks/ansible-pan
 Documentation: https://paloaltonetworks.github.io/ansible-pan/
 
-Install required Python libraries: pip install pan-python pandevice
+Install required Python libraries: pip3 install pan-python pandevice
 
 Install modules from Ansible Galaxy (builtin with ansible unbuntu 18.04 package): ansible-galaxy install PaloAltoNetworks.paloaltonetworks
 
