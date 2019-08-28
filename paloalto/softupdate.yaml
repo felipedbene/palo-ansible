@@ -15,7 +15,7 @@
         api_key : '{{ api_key }}'
         initial_delay: 10
         interval: 5
-        timeout : 600
+        timeout : 30
 
 #    - name : Request download to the latest CONTENT
 #      panos_op :
